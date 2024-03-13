@@ -21,8 +21,18 @@ namespace BetterDecorator
                 Console.WriteLine("Third argument must be an integer.");
                 return;
             }
-
+           string decoratedString = Decor(inputString, decorationChar, decorationCount);
+            Console.WriteLine(decoratedString);
         }
 
+        static string Decor(string input, string decorationChar, int decorationCount)
+        {
+            string decoration = new string(decorationChar[0], decorationCount);
+            return $"{decoration}{input}{decoration}";
+        }
+
+
     }
+
 }
+
