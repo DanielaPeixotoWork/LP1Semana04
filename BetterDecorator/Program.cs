@@ -2,8 +2,15 @@
 
 namespace BetterDecorator
 {
+    /// <summary>
+    /// Programa para decorar uma string com um caractere específico.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Método principal do programa.
+        /// </summary>
+        /// <param name="args">Argumentos da linha de comando.</param>
         static void Main(string[] args)
         {
             if (args.Length != 3)
@@ -21,18 +28,23 @@ namespace BetterDecorator
                 Console.WriteLine("Third argument must be an integer.");
                 return;
             }
-           string decoratedString = Decor(inputString, decorationChar, decorationCount);
+
+            string decoratedString = Decor(inputString, decorationChar[0], decorationCount);
             Console.WriteLine(decoratedString);
         }
 
-        static string Decor(string input, string decorationChar, int decorationCount)
+        /// <summary>
+        /// Método para decorar uma string com um caractere específico.
+        /// </summary>
+        /// <param name="input">String a ser decorada.</param>
+        /// <param name="decorationChar">Caractere de decoração.</param>
+        /// <param name="decorationCount">Número de vezes que o caractere deve aparecer de cada lado.</param>
+        /// <returns>String decorada.</returns>
+        static string Decor(string input, char decorationChar, int decorationCount)
         {
-            string decoration = new string(decorationChar[0], decorationCount);
-            return $"{decoration}{input}{decoration}";
+            string decoration = new string(decorationChar, decorationCount);
+            string decorationString = decoration.PadRight(decoration.Length * 2 + input.Length, decorationChar);
+            return $"{decorationString} {input} {decorationString}";
         }
-
-
     }
-
 }
-
